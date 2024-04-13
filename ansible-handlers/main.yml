@@ -1,0 +1,16 @@
+#Use Case: To change update your webpage for the website 
+#check nginx default page at : /etc/nginx/sites-available
+
+- name: Update sql servers
+  hosts: databaseservers
+  remote_user: ubuntu
+  become: yes
+  tasks:
+    - name: Ensure nginx is at the latest version
+      apt:
+        name: nginx
+        state: present
+    - name: index.html copy
+      template: src=updated.html dest=//var/www/html/index.nginx-debian.html 
+      notify:
+        - Restart Nginx

@@ -1,0 +1,17 @@
+- name: Print hostname and IP address
+  become: yes
+  remote_user: ubuntu
+  hosts: all
+  tasks:
+    - name: Print hostname
+      debug:
+        msg: "Hostname is {{ ansible_facts['hostname'] }}"
+
+    - name: Print IP address
+      debug:
+        msg: "IP address is {{ ansible_facts['default_ipv4']['address'] }}"
+
+    - name: Print distribution (only for Ubuntu)
+      debug:
+        msg: "Distribution is {{ ansible_facts['distribution'] }}"
+      when: ansible_facts['distribution'] == 'Ubuntu'

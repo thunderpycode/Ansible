@@ -13,6 +13,7 @@ Some Fundamentals:
 
 1. Handlers: In Ansible, handlers are special tasks that are only executed when triggered by the notify directive, after a certain set of conditions are fulfilled. Handlers are typically used to start, restart, reload, and stop services on target nodes only when there is a change in the state of the task, and not when no change is made. 
 
+2. Ansible facts are pieces of information gathered from managed hosts by Ansible when a playbook is executed. These facts include details about the system, such as network interfaces, operating system, hardware details, and more. Ansible gathers these facts using modules called "fact-gathering modules" during the setup phase of a playbook run.
 
 
 ---------------------------------------------------------------------------------------- 

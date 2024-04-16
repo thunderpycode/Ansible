@@ -1,0 +1,20 @@
+---
+# copy file to selected list of host using loop and when
+
+- name: Example playbook with a loop and condition
+  hosts: all  # You can specify your target hosts or groups here
+  remote_user: ubuntu
+  tasks:
+    - name: Create directories
+      ansible.builtin.file:
+        path: "/tmp/example_dir_{{ ansible_host }}"
+        state: directory
+      loop: "{{ ansible_play_hosts_all }}"
+      when: ansible_host.startswith('13')  # Condition to execute the task only for hosts with IP addresses starting with "10."
+
+    - name: Copy a file to each host
+      ansible.builtin.copy:
+        src: looptest.txt
+        dest: "/tmp/example_dir_{{ ansible_host }}/file.txt"
+      loop: "{{ ansible_play_hosts_all }}"
+      when: ansible_host.startswith('13.127')  # Condition to execute the task only for hosts with IP addresses starting with "10."

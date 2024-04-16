@@ -18,3 +18,8 @@ Some Fundamentals:
 ---------------------------------------------------------------------------------------- 
 Commands
 1. To run playbook for this project  : ansible-playbook playbook.yml -i Inventory/hosts
+   For selected host: ansible-playbook -i Inventory/hosts playbook.yml --limit host1,host2
+ 
+2. Passing variables at runtine: ansible-playbook --inventory Inventory/hosts ansible-variables-playbook.yaml --extra-vars '{"version":"1.0","other_variable":"foo-world"}'
+
+3. Passing var file at runtime: ansible-playbook --inventory Inventory/hosts ansible-variables-playbook.yaml --extra-vars "@my-vars.yml"

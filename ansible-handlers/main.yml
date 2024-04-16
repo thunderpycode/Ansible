@@ -1,6 +1,32 @@
 #Use Case: To change update your webpage for the website 
 #check nginx default page at : /etc/nginx/sites-available
 
+#server {
+#       listen 80;
+#       listen [::]:80;
+#
+#       server_name example.com;
+#
+#       root /var/www/example.com;
+#       index index.html;
+#
+#       location / {
+#               try_files $uri $uri/ =404;
+#       }
+#}#server {
+#       listen 80;
+#       listen [::]:80;
+#
+#       server_name example.com;
+#
+#       root /var/www/example.com;
+#       index index.html;
+#
+#       location / {
+#               try_files $uri $uri/ =404;
+#       }
+#
+
 - name: Update sql servers
   hosts: databaseservers
   remote_user: ubuntu
